@@ -6,28 +6,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Paint</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Rock+Salt" rel="stylesheet">
     <link rel="stylesheet" type="text/css" media="screen" href="./CSS/style.css" />
-    
+
 </head>
 
 <body>
     <div class="container">
         <!-- TOOLS BAR -->
         <div class="toolsBar">
-            <table style="width:100%">
-                <tr>
-                    <th><button class="colorBlue"></button></th>
-                    <th><button class="colorGreen"></button></th>
-                </tr>
-                <tr>
-                    <th id="colorYellow"></th>
-                    <th id="colorOrange"></th>
-                </tr>
-                <tr>
-                    <th></th>
-                    <th></th>
-                </tr>
-            </table>
+            <h3>Colors</h3>
+            <button class="color" id="yellow" value="#f1c40f"></button>
+            <button class="color" id="green" value="#2ecc71"></button>
+            <button class="color" id="orange" value="#e67e22"></button>
+            <button class="color" id="blue" value="#3498db"></button>
+            <button class="color" id="red" value="#e74c3c"></button>
+            <button class="color" id="purple" value="#9b59b6"></button>
+            <h3>Brushs</h3>
+            <button class="brush" id="square"></button>
+            <button class="brush" id="circle"></button>
+            <button class="brush" id="oval"></button>
+            <h3>Size</h3>
+            <input type="range" min="2" max="52" value="26">
         </div>
 
         <!-- DAWING ZONE -->
