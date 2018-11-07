@@ -80,6 +80,21 @@ button.brush {
 input {
     width: 90%;
 }
+/* eraser */
+#eraser {
+    background-image: url(https://img.icons8.com/cotton/80/000000/erase.png);
+    background-position: center;
+    background-size: cover;
+    background-color: transparent;
+}
+/* brush */
+button#clear {
+    width: 70px;
+    border:1px solid gray;
+}
+button#clear:after {
+    content: "C L E A R";
+}
 
 /* <!-- DAWING ZONE --> */
 .drawingZone {

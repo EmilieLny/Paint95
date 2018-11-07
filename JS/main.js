@@ -34,11 +34,24 @@ for (var i = 0; i < brushTools.length; i++) {
 }
 
 // SIZE
-var size = 26;
+var size = 20;
 var sizeTools = document.querySelector('input');
 sizeTools.addEventListener('input', sizeSelected)
 function sizeSelected() {
-    size = parseInt(sizeTools.value)
+    size = parseInt(sizeTools.value);
+}
+
+// ERASER
+var eraserTools = document.getElementById('eraser');
+eraserTools.addEventListener('click', function (event) {
+    color = 'white';
+});
+
+// CLEAR
+var clearTools = document.getElementById('clear');
+clearTools.addEventListener('click', clear);
+function clear() {
+    drawingZone.innerHTML = "";
 }
 
 // DEFAULT 
@@ -55,6 +68,7 @@ function draw(event) {
     // pencil position
     var x = event.clientX;
     var y = event.clientY;
+    console.log ("x : " + x + " | y : " + y)
     pencil.style.position = "absolute";
     pencil.style.left = x + "px";
     pencil.style.top = y + "px";
