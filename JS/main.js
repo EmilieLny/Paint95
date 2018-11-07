@@ -20,18 +20,20 @@ function draw(event) {
     pencil.style.left = x + "px";
     pencil.style.top = y + "px";
 }
-function move(event) {
+function move() {
     drawingZone.addEventListener("mousemove", draw);
 }
-function stop(event) {
+function stop() {
     console.log('Im up')
-    //
+    drawingZone.removeEventListener("mousemove", draw);
 }
-$('.drawingZone').on('mouseup', function(e) {
-    e.preventDefault();
-    $('.drawingZone').off('mousemove.draw, mousedown.move');
-});
-
 drawingZone.addEventListener("mousedown", move);
 drawingZone.addEventListener("mouseup", stop);
+
+// $('.drawingZone').on('mouseup', function(e) {
+//     e.preventDefault();
+//     $('.drawingZone').off('mousemove.draw, mousedown.move');
+// });
+
+
 
