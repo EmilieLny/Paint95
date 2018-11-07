@@ -1,0 +1,39 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: gray;
+}
+.container {
+    display: flex;
+}
+
+/* <!-- TOOLS BAR --> */
+.toolsBar{
+    width: 85px;
+    height: 100vh;
+    background-color: lightgray;
+}
+table{
+    border-spacing: 1px;
+}
+tr, th {
+    /* border: 1px solid black; */
+    height: 40px;
+    width: 40px;
+    margin: 0;
+    padding: 0;
+    cursor : pointer;
+}
+#colorBlue {
+    background-color: blue;
+}
+#colorGreen {
+    background-color: green;
+}
+
+/* <!-- DAWING ZONE --> */
+.drawingZone {
+    width: 500px;
+    height: 500px;
+    background-color: white;
+}
