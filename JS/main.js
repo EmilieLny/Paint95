@@ -1,17 +1,19 @@
 var drawingZone = document.querySelector(".drawingZone");
 
+// DEFAULT 
 function draw(event) {
     console.log("in the draw function")
     var pencil = document.createElement("div");
     var drawingZone = document.querySelector(".drawingZone");
     drawingZone.appendChild(pencil);
-
     // pencil style
     pencil.style.background = "black";
     pencil.style.position = "absolute";
-    pencil.style.height = "5px";
-    pencil.style.width = "5px";
-
+    pencil.style.WebkitBorderRadius= "20px;";
+    pencil.style.MozBorderRadius= "20px;";
+    pencil.style.borderRadius= "20px;";
+    pencil.style.height = "2px";
+    pencil.style.width = "2px"; 
     // pencil position
     var x = event.clientX;
     var y = event.clientY;
@@ -30,10 +32,9 @@ function stop() {
 drawingZone.addEventListener("mousedown", move);
 drawingZone.addEventListener("mouseup", stop);
 
-// $('.drawingZone').on('mouseup', function(e) {
-//     e.preventDefault();
-//     $('.drawingZone').off('mousemove.draw, mousedown.move');
-// });
-
-
-
+// COLORS
+function colorBlue(){
+    pencil.style.background = "blue";
+}
+var blue = document.querySelector(".colorBlue");
+blue.addEventListener('click', colorBlue);

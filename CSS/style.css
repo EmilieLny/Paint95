@@ -14,7 +14,7 @@ body {
     background-color: lightgray;
 }
 table{
-    border-spacing: 1px;
+    border-collapse: collapse;
 }
 tr, th {
     /* border: 1px solid black; */
@@ -24,13 +24,29 @@ tr, th {
     padding: 0;
     cursor : pointer;
 }
-#colorBlue {
+
+button {
+    border: none;
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+}
+button:focus {
+    outline: none;
+    outline: 2px solid #00000090;
+    outline-offset: -2px;
+}
+button:active {
+    outline: 4px solid #00000070;
+    outline-offset: -4px;
+}
+.colorBlue {
     background-color: blue;
 }
-#colorGreen {
-    background-color: green;
-}
+.colorGreen {
+    background-color: #4CAF50;
 
+}
 /* <!-- DAWING ZONE --> */
 .drawingZone {
     width: 500px;
