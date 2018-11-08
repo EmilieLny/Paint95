@@ -22,11 +22,40 @@ function colorPallet(color, value) {
     toolsBar.appendChild(colorButton);
 }
 colorPallet('yellow', '#f1c40f');
-colorPallet('green', '#2ecc71');
+colorPallet('yellowDark', '#f39c12');
 colorPallet('orange', '#e67e22');
-colorPallet('blue', '#3498db');
+colorPallet('orangeDark', '#d35400');
 colorPallet('red', '#e74c3c');
+colorPallet('redDark', '#c0392b');
 colorPallet('purple', '#9b59b6');
+colorPallet('purpleDark', '#8e44ad');
+colorPallet('blue', '#3498db');
+colorPallet('blueDark', '#2980b9');
+colorPallet('green', '#2ecc71');
+colorPallet('greenDark', '#27ae60');
+colorPallet('white', '#ecf0f1');
+colorPallet('black', '#34495e');
+
+//Creation eraser
+var eraserTools = document.createElement('button');
+eraserTools.id = 'eraser';
+toolsBar.appendChild(eraserTools);
+
+//Creation rotation
+var rotationTools = document.createElement('button');
+rotationTools.id = 'rotation';
+toolsBar.appendChild(rotationTools);
+
+//Creation size pallet
+var sizeLabel = document.createElement('h3');
+sizeLabel.textContent = "Size";
+toolsBar.appendChild(sizeLabel);
+var sizeTools = document.createElement('input');
+sizeTools.type = 'range';
+sizeTools.min = '2';
+sizeTools.max = '52';
+sizeTools.value = '26';
+toolsBar.appendChild(sizeTools);
 
 //Creation brushs pallet
 var brushLabel = document.createElement('h3');
@@ -42,25 +71,6 @@ brushPallet('square');
 brushPallet('circle');
 brushPallet('oval');
 
-//Creation size pallet
-var sizeLabel = document.createElement('h3');
-sizeLabel.textContent = "Size";
-toolsBar.appendChild(sizeLabel);
-var sizeTools = document.createElement('input');
-sizeTools.type = 'range';
-sizeTools.min = '2';
-sizeTools.max = '52';
-sizeTools.value = '26';
-toolsBar.appendChild(sizeTools);
-
-//Creation eraser
-var eraserLabel = document.createElement('h3');
-eraserLabel.textContent = "Eraser";
-toolsBar.appendChild(eraserLabel);
-var eraserTools = document.createElement('button');
-eraserTools.id = 'eraser';
-toolsBar.appendChild(eraserTools);
-
 //Creation reSize
 var reSizeTools = document.createElement('button');
 reSizeTools.id = 'reSize';
@@ -70,6 +80,16 @@ toolsBar.appendChild(reSizeTools);
 var clearTools = document.createElement('button');
 clearTools.id = 'clear';
 toolsBar.appendChild(clearTools);
+
+//Creation save
+var saveTools = document.createElement('button');
+saveTools.id = 'save';
+toolsBar.appendChild(saveTools);
+
+//Creation load
+var loadTools = document.createElement('button');
+loadTools.id = 'load';
+toolsBar.appendChild(loadTools);
 
 //-->> Creation drawingZone div---------------------------------
 var drawingZone = document.createElement('div');
@@ -86,6 +106,33 @@ for (var i = 0; i < colorTools.length; i++) {
     colorTools[i].addEventListener('click', function (event) {
         color = event.target.value;
     });
+}
+
+// ERASER
+eraserTools.addEventListener('click', function (event) {
+    color = 'white';
+});
+
+// ROTATION 
+var rotation = document.getElementById('rotation');
+rotation.addEventListener('click', rotationDraw)
+var rot = 0;
+function rotationDraw() {
+    var drawNow = document.querySelector('.drawingZone');
+    //var drawRotation = "";
+    drawNow.style.transform = 'rotate(180deg)';
+    //drawRotation = drawNow.innerHTML;
+    //drawNow = drawRotation;
+    rot = 1;
+
+}
+
+
+// SIZE
+var size = sizeTools.value;
+sizeTools.addEventListener('input', sizeSelected)
+function sizeSelected() {
+    size = parseInt(sizeTools.value);
 }
 
 // BRUSH
@@ -111,18 +158,6 @@ for (var i = 0; i < brushTools.length; i++) {
 
     });
 }
-
-// SIZE
-var size = sizeTools.value;
-sizeTools.addEventListener('input', sizeSelected)
-function sizeSelected() {
-    size = parseInt(sizeTools.value);
-}
-
-// ERASER
-eraserTools.addEventListener('click', function (event) {
-    color = 'white';
-});
 
 // DRAWING ZONE SIZE
 var reSize = document.getElementById('reSize');
@@ -156,6 +191,30 @@ function clear() {
     drawingZone.innerHTML = "";
 }
 
+//SAVE
+var saveTools = document.getElementById('save');
+saveTools.addEventListener('click', save);
+function save() {
+    var saveName = prompt("Please name your artwork");
+    var saveArt = document.querySelector('.drawingZone').innerHTML;
+    localStorage.setItem(saveName, saveArt);
+}
+
+//LOAD
+var loadTools = document.getElementById('load');
+loadTools.addEventListener('click', load);
+function load() {
+    var inputName = prompt("What's the name of your artwork ?");
+    var drawingZone = document.querySelector(".drawingZone");
+    var loadName = localStorage.getItem(inputName);
+    if (loadName != null) {
+        drawingZone.innerHTML = localStorage.getItem(inputName);
+    } else {
+        alert("Not a valid Name, try again");
+        load();
+    }
+}
+
 // DEFAULT 
 function draw(event) {
     var pencil = document.createElement("div");
@@ -172,8 +231,15 @@ function draw(event) {
     var y = event.clientY;
     console.log("x : " + x + " | y : " + y)
     pencil.style.position = "absolute";
-    pencil.style.left = x + "px";
-    pencil.style.top = y + "px";
+    if (rot == 0) {
+        console.log('inverse it')
+        pencil.style.left = x + "px";
+        pencil.style.top = y + "px";
+    } else if (rot == 1){
+        pencil.style.right = (x-90) + "px";
+        pencil.style.bottom = y + "px";
+    }
+
 }
 function move() {
     drawingZone.addEventListener("mousemove", draw);
