@@ -87,13 +87,21 @@ input {
     background-size: cover;
     background-color: transparent;
 }
-/* brush */
+/* clear */
 button#clear {
     width: 70px;
     border:1px solid gray;
 }
 button#clear:after {
     content: "C L E A R";
+}
+/* reSize */
+button#reSize {
+    width: 70px;
+    border:1px dashed gray;
+}
+button#reSize:after {
+    content: "RESIZE";
 }
 
 /* <!-- DAWING ZONE --> */
