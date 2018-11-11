@@ -94,6 +94,7 @@ toolsBar.appendChild(loadTools);
 //-->> Creation drawingZone div---------------------------------
 var drawingZone = document.createElement('div');
 drawingZone.className = 'drawingZone';
+drawingZone.style.position = 'relative';
 container.appendChild(drawingZone);
 
 
