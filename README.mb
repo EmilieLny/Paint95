@@ -16,8 +16,8 @@ Our basic version of Paint 95 has a canvas (sized 500px * 500px), and the abilit
 1. Generate a canvas and a color pallet.
 2. When clicking on any point in the canvas, the color should change according to your selection (make sure you have a default color).
 3. Add at least 2 additional features of your own (you can use the suggested features in the geekout).
-
 4. You are not allowed to use HTML5 Canvas tag.
+
 ### Geek out
 Choose any (or all) of the features below:
 1. Make a dynamic canvas size (based on the user input).
